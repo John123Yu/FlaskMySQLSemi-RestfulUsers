@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>SemiRestful Users New User EDIT Page</title>
+</head>
+<body>
+    <h1> EDIT User </h1>
+    {% for user in edit_user %}
+    <form action='/users/{{user['id']}}' method='post'>
+          First Name: <input type='text' name='first_name' placeholder = "{{user['first_name']}}"> 
+          Last Name: <input type='text' name='last_name' placeholder = "{{user['last_name']}}">
+          Email: <input type='text' name='email' placeholder = "{{user['email']}}">
+          {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <p class = "{{ category }}"> {{message}} </p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <input type='submit' value='update'>
+    </form>
+    {% endfor %}
+    <a href="/users">Go Back to Display</a>
+</body>
+</html>

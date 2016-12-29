@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Semi-Restful Users Display Page</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Full Name</th>
+			<th>Email</th>
+			<th>Created At</th>
+			<th>Actions</th>
+		</tr>
+		{% for user in all_users: %}
+		<tr>
+			<td>{{user['id']}}</td>
+			<td>{{user['first_name']}} {{user['last_name']}}</td>
+			<td>{{user['email']}}</td>
+			<td>{{user['created_at']}}</td>
+			<td>
+				<a href="/users/{{user['id']}}">Show</a>
+				<a href="/users/{{user['id']}}/edit">Edit</a>
+				<a href="/users/{{user['id']}}/delete">Delete</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<a href="/users/new">Add A New User</a>
+</body>
+</html>

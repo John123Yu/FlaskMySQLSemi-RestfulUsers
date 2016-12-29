@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>SemiRestful Users New User Page</title>
+</head>
+<body>
+	<h1> Add A New User </h1>
+	<form action='/users/create' method='post'>
+          First Name: <input type='text' name='first_name'> 
+          Last Name: <input type='text' name='last_name'>
+          Email: <input type='text' name='email'>
+          {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <p class = "{{ category }}"> {{message}} </p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <input type='submit' value='create user'>
+    </form>
+    <a href="/users">Go Back to Display</a>
+</body>
+</html>
